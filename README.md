@@ -1,0 +1,9 @@
+# RideBuddies
+
+Don't have a vehicle? Need a ride?
+Come to Ride Buddies...
+
+Here you can find rides for your journey based on your requirements...
+Ride Buddies offers an easy solution of finding rides through a web app.
+
+Offer rides to friends, earn money by giving rides, promote car pooling and save environment...

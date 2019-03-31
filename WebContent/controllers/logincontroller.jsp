@@ -40,7 +40,7 @@ if(type != null){
 		}
 	} else if(type.equals("logout")){
 		session.invalidate();
-		response.sendRedirect("../index.jsp?msg=logout");
+		response.sendRedirect("../RideBuddiesIndex/index.html?msg=logout");
 	}
 }
 %>

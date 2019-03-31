@@ -36,8 +36,10 @@ if(session.getAttribute("phone") == null) {
             <div class="rehomes-search-form">
                 <form action="controllers/createcontroller.jsp" method="post">
                 <input type="hidden" name="type" value="create">
-                <input type="hidden" name="startCood" id="startCood">
-                <input type="hidden" name="endCood" id="endCood">
+                <input type="hidden" name="startLat" id="startLat">
+                <input type="hidden" name="endLat" id="endLat">
+                <input type="hidden" name="startLng" id="startLng">
+                <input type="hidden" name="endLng" id="endLng">
                     <div class="row">
                         <div class="col-12 col-lg-10">
                             <div class="row">
@@ -118,7 +120,8 @@ if(session.getAttribute("phone") == null) {
                 if (!place.geometry) {
                     return;
                 }
-                document.getElementById("endCood").value = place.geometry.location;
+                document.getElementById("endLat").value = place.geometry.location.lat();
+                document.getElementById("endLng").value = place.geometry.location.lng();
             });
             
             var input1 = document.getElementById('start');
@@ -130,7 +133,8 @@ if(session.getAttribute("phone") == null) {
                 if (!place.geometry) {
                     return;
                 }
-                document.getElementById("startCood").value = place.geometry.location;
+                document.getElementById("startLat").value = place.geometry.location.lat();
+                document.getElementById("startLng").value = place.geometry.location.lng();
             });
             document.getElementById('end').addEventListener('change', onChangeHandler);
             document.getElementById('start').addEventListener('change', onChangeHandler);

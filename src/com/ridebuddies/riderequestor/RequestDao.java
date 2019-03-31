@@ -222,7 +222,7 @@ public class RequestDao {
 			if(con == null) {
 				con = DbData.getConnection();
 			}
-			String query = "delete from Request where creater=? and requester=? and status != ?";
+			String query = "delete from Request where creater=? and requester!=? and status != ?";
 			ps = con.prepareStatement(query);
 			ps.setString(1, "accept");
 			ps.setString(2, creater);

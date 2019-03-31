@@ -6,7 +6,7 @@
 <%
 	if (session.getAttribute("phone") == null) {
 		response.sendRedirect("index.jsp?msg=loginfirst");
-	}
+	} else {
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +140,7 @@ function acceptView() {
 							<li><span>Gender : </span> <span><%=user.getGender()%></span></li>
 							<li><span>Vehicle : </span> <span><%=dto.getVehType()%></span></li>
 							<li><span>People : </span> <span><%=dto.getPeople()%></span></li>
-							<li><span>Price : </span> <span><%=dto.getPrice() %></span></li>
+							<li><span>Price : </span> <span><%=dto.getPrice()%></span></li>
 						</ul>
 					</div>
 
@@ -162,7 +162,9 @@ function acceptView() {
 						<form action="controllers/requestcontroller.jsp" method="post">
 							<input type="hidden" value="<%=user.getPhone()%>" name="phone">
 							<input type="hidden" value="complete" name="type">
-							<button type="submit" class="btn rehomes-btn mt-15 w-100">Ride
+							<input type="number" name="rat" class="form-control mb-30"
+								placeholder="rating out of 5">
+							<button type="submit" class="btn rehomes-btn w-100">Ride
 								Complete</button>
 						</form>
 					</div>
@@ -185,10 +187,9 @@ function acceptView() {
 						<h4 class="mb-30">Route</h4>
 
 						<!-- Location Maps -->
-						<div class="loction-map" id="map">
-						</div>
+						<div class="loction-map" id="map"></div>
 
-<script>
+						<script>
         function initMap() {
             var directionsService = new google.maps.DirectionsService;
             var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -216,7 +217,8 @@ function acceptView() {
             });
         }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGMh_-YjvhGFCQSuLe4O4TmW9TPgYVKCI&libraries=places&callback=initMap">
+						<script async defer
+							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGMh_-YjvhGFCQSuLe4O4TmW9TPgYVKCI&libraries=places&callback=initMap">
 </script>
 
 						<!-- Single Location Content -->
@@ -243,57 +245,57 @@ function acceptView() {
 						</div>
 					</div> -->
 
-					<%
-						if (status != null) {
-									if (status.equals("accept")) {
-					%>
-					<!-- Leave A Reply -->
-					<div class="rehomes-comment-form mb-80 wow fadeInUp"
-						data-wow-delay="200ms">
-						<h4 class="mb-30">Leave A Comment</h4>
+						<%
+							if (status != null) {
+										if (status.equals("accept")) {
+						%>
+						<!-- Leave A Reply -->
+						<div class="rehomes-comment-form mb-80 wow fadeInUp"
+							data-wow-delay="200ms">
+							<h4 class="mb-30">Leave A Comment</h4>
 
-						<!-- Form -->
-						<form class="#" method="post">
-							<div class="row">
-								<div class="col-12 col-lg-4">
-									<input type="text" name="message-name"
-										class="form-control mb-30" placeholder="Name">
+							<!-- Form -->
+							<form class="#" method="post">
+								<div class="row">
+									<div class="col-12 col-lg-4">
+										<input type="text" name="message-name"
+											class="form-control mb-30" placeholder="Name">
+									</div>
+									<div class="col-12 col-lg-4">
+										<input type="text" name="phone" class="form-control mb-30"
+											placeholder="Number">
+									</div>
+									<div class="col-12 col-lg-4">
+										<input type="email" name="message-email"
+											class="form-control mb-30" placeholder="Email">
+									</div>
+									<div class="col-12">
+										<textarea name="message" class="form-control mb-30"
+											placeholder="Messages"></textarea>
+									</div>
+									<div class="col-12">
+										<button type="submit" class="btn rehomes-btn mt-15">Send
+											Messages</button>
+									</div>
 								</div>
-								<div class="col-12 col-lg-4">
-									<input type="text" name="phone" class="form-control mb-30"
-										placeholder="Number">
-								</div>
-								<div class="col-12 col-lg-4">
-									<input type="email" name="message-email"
-										class="form-control mb-30" placeholder="Email">
-								</div>
-								<div class="col-12">
-									<textarea name="message" class="form-control mb-30"
-										placeholder="Messages"></textarea>
-								</div>
-								<div class="col-12">
-									<button type="submit" class="btn rehomes-btn mt-15">Send
-										Messages</button>
-								</div>
-							</div>
-						</form>
+							</form>
+						</div>
+						<%
+							}
+									}
+						%>
 					</div>
-					<%
-						}
-								}
-					%>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- **** Properties-area End **** -->
-	<!-- **** Footer Area Start **** -->
-	<jsp:include page="footer.html"></jsp:include>
-	<!-- **** Footer Area End **** -->
-
+		<!-- **** Properties-area End **** -->
+		<!-- **** Footer Area Start **** -->
+		<jsp:include page="footer.html"></jsp:include>
+		<!-- **** Footer Area End **** -->
 </body>
 <%
 			}
 		}
 %>
 </html>
+<%}%>

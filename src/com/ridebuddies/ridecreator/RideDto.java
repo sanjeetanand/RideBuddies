@@ -2,26 +2,40 @@ package com.ridebuddies.ridecreator;
 
 public class RideDto {
 
-	String startLoc,endLoc,vehType,mobile,phone,startCood,endCood;
+	String startLoc,endLoc,vehType,mobile,phone;
+	double startLat,endLat,startLng,endLng;
 	int startTime,endTime,people,price;
 	
+	
+	public double getStartLat() {
+		return startLat;
+	}
+	public void setStartLat(double startLat) {
+		this.startLat = startLat;
+	}
+	public double getEndLat() {
+		return endLat;
+	}
+	public void setEndLat(double endLat) {
+		this.endLat = endLat;
+	}
+	public double getStartLng() {
+		return startLng;
+	}
+	public void setStartLng(double startLng) {
+		this.startLng = startLng;
+	}
+	public double getEndLng() {
+		return endLng;
+	}
+	public void setEndLng(double endLng) {
+		this.endLng = endLng;
+	}
 	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public String getStartCood() {
-		return startCood;
-	}
-	public void setStartCood(String startCood) {
-		this.startCood = startCood;
-	}
-	public String getEndCood() {
-		return endCood;
-	}
-	public void setEndCood(String endCood) {
-		this.endCood = endCood;
 	}
 	
 	public String getStartLoc() {

@@ -125,6 +125,95 @@ public class UserDao {
 		}
 	}
 	
+	@SuppressWarnings("finally")
+	public boolean deleteUser(String phone) {
+		boolean flag = false;
+		try {
+			if(con == null) {
+				con = DbData.getConnection();
+			}
+			String query = "delete from User where phone=?";
+			ps = con.prepareStatement(query);
+			ps.setString(1,phone );
+			if(ps.executeUpdate()>0) {
+				flag=true;
+			}
+		} catch (Exception e) {
+			System.out.println("Exception in deleteUser : "+e);
+		} finally {
+			rs=null;
+			ps = null;
+			con = null;
+			return flag;
+		}
+	}
+	
+	@SuppressWarnings("finally")
+	public boolean rideRat(String phone,int rat) {
+		boolean flag = false;
+		try {
+			if(con == null) {
+				con = DbData.getConnection();
+			}
+			String query = "select riderat from User where phone=?";
+			ps = con.prepareStatement(query);
+			ps.setString(1,phone );
+			rs = ps.executeQuery();
+			int riderat = 0;
+			while(rs.next()) {
+				riderat = rs.getInt("riderat");
+			}
+			riderat = (riderat+rat)/2;
+			query = "update User set riderat=? where phone=?";
+			ps = con.prepareStatement(query);
+			ps.setInt(1, riderat);
+			ps.setString(2, phone);
+			if(ps.executeUpdate()>0) {
+				flag = true;
+			}
+		} catch (Exception e) {
+			System.out.println("Exception in rideRat : "+e);
+		} finally {
+			rs=null;
+			ps = null;
+			con = null;
+			return flag;
+		}
+	}
+	
+	@SuppressWarnings("finally")
+	public boolean reqRat(String phone,int rat) {
+		boolean flag = false;
+		try {
+			if(con == null) {
+				con = DbData.getConnection();
+			}
+			String query = "select reqrat from User where phone=?";
+			ps = con.prepareStatement(query);
+			ps.setString(1,phone );
+			rs = ps.executeQuery();
+			int reqrat = 0;
+			while(rs.next()) {
+				reqrat = rs.getInt("reqrat");
+			}
+			reqrat = (reqrat+rat)/2;
+			query = "update User set reqrat=? where phone=?";
+			ps = con.prepareStatement(query);
+			ps.setInt(1, reqrat);
+			ps.setString(2, phone);
+			if(ps.executeUpdate()>0) {
+				flag = true;
+			}
+		} catch (Exception e) {
+			System.out.println("Exception in reqRat : "+e);
+		} finally {
+			rs=null;
+			ps = null;
+			con = null;
+			return flag;
+		}
+	}
+	
 	public static void main(String[] args) {
 		/*UserDto dto = new UserDto();
 		dto.setName("Sanjeet");

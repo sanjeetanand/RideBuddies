@@ -186,7 +186,7 @@ if(req == null){
 					<div class="single-agent-area wow fadeInUp" data-wow-delay="200ms">
 						<!-- Agent Thumb -->
 						<div class="single-agent-thumb">
-							<img src="img/bg-img/sanjeet.jpg" alt="">
+							<img src="img/bg-img/swaraj.jpg" alt="">
 						</div>
 						<!-- Agent Info -->
 						<div class="agent-info">
@@ -196,7 +196,7 @@ if(req == null){
 							</p>
 							<p>
 								<i class="fa fa-envelope" aria-hidden="true"></i>
-								<%=user.getGender() %>
+								<%=user.getEmail() %>
 							</p>
 						</div>
 						<!-- Agent Social Info -->
@@ -206,6 +206,7 @@ if(req == null){
 								<form action="controllers/acceptcontroller.jsp" method="post">
 									<input type="hidden" value="<%=user.getPhone() %>" name="requester">
 									<input type="hidden" value="complete" name="type">
+									<input type="number" name="rat" class="form-control mb-30" placeholder="rating out of 5">
 									<button type="submit" class="rehomes-btn"
 										style="background-color: green;">Ride Completed</button>
 								</form>

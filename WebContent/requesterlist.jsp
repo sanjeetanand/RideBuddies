@@ -196,7 +196,7 @@ if(list.isEmpty()){
 					<div class="single-agent-area wow fadeInUp" data-wow-delay="200ms">
 						<!-- Agent Thumb -->
 						<div class="single-agent-thumb">
-							<img src="img/bg-img/sanjeet.jpg" alt="">
+							<img src="img/bg-img/swaraj.jpg" alt="">
 						</div>
 						<!-- Agent Info -->
 						<div class="agent-info">
@@ -206,7 +206,7 @@ if(list.isEmpty()){
 							</p>
 							<p>
 								<i class="fa fa-envelope" aria-hidden="true"></i>
-								<%=user.getGender() %>
+								<%=user.getEmail() %>
 							</p>
 						</div>
 						<!-- Agent Social Info -->

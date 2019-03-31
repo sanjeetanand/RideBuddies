@@ -24,7 +24,18 @@ if(session.getAttribute("phone") == null) {
 </head>
 
 <body>
-
+<%
+String msg = request.getParameter("msg");
+if(msg != null){
+	if(msg.equals("norequestexist")){
+%>
+<script type="text/javascript">
+alert("No Request Exist");
+</script>
+<%
+	}
+}
+%>
 	<!-- **** Header Area Start **** -->
 	<jsp:include page="header.html"></jsp:include>
 	<!-- **** Header Area End **** -->
@@ -45,8 +56,10 @@ if(session.getAttribute("phone") == null) {
 		<div class="container">
 			<div class="rehomes-search-form">
 				<form action="home.jsp" method="post">
-				<input type="hidden" name="startCood" id="startCood" >
-				<input type="hidden" name="endCood" id="endCood" >
+				<input type="hidden" name="startLat" id="startLat">
+                <input type="hidden" name="endLat" id="endLat">
+                <input type="hidden" name="startLng" id="startLng">
+                <input type="hidden" name="endLng" id="endLng">
 					<div class="row">
 						<div class="col-12 col-lg-10">
 							<div class="row">
@@ -101,7 +114,8 @@ if(session.getAttribute("phone") == null) {
                 location: place.geometry.location
             });
             marker.setVisible(true);
-            document.getElementById("endCood").value = place.geometry.location;
+            document.getElementById("endLat").value = place.geometry.location.lat();
+            document.getElementById("endLng").value = place.geometry.location.lng();
         });
         
         var input1 = document.getElementById('start');
@@ -126,7 +140,8 @@ if(session.getAttribute("phone") == null) {
                 location: place.geometry.location
             });
             marker.setVisible(true);
-            document.getElementById("startCood").value = place.geometry.location;
+            document.getElementById("startLat").value = place.geometry.location.lat();
+            document.getElementById("startLng").value = place.geometry.location.lng();
         });
 	}
 
@@ -213,22 +228,38 @@ if(startLoc == null && endLoc == null){
 			}
 		}
 	} else {
-		String startCood = request.getParameter("startCood");
-		String endCood = request.getParameter("endCood");
+		/* String startLats = request.getParameter("startLat");
+		String endLats = request.getParameter("endLat");
+		String startLngs = request.getParameter("startLng");
+		String endLngs = request.getParameter("endLng");
+		if(startLats != null && startLngs != null){
+			double startLat = Double.parseDouble(startLats);
+			double startLng = Double.parseDouble(startLngs);
+		} else {
+			double startLat = 0;
+			double startLng = 0;
+		}
+		if(endLats != null && endLngs != null){
+			double endLat = Double.parseDouble(endLats);
+			double endLng = Double.parseDouble(endLngs);
+		} else {
+			double endLat = 0;
+			double endLng = 0;
+		} */
 		if(startLoc == null){
 			startLoc = "";
 		} else if(endLoc == null) {
 			endLoc = "";
 		}
 		ArrayList<RideDto> list = new RideDao().searchRide(startLoc,endLoc);
+		//ArrayList<RideDto> list = new RideDao().searchRideLatLng(startLat,startLng,endLat,endLng);
 		if(list.isEmpty()){
 %>
 		<div class="col-12">
 			<div class="section-heading text-center wow fadeInUp"
 				data-wow-delay="200ms">
 				<h4>No Rides Found</h4>
-				<p><%=startCood %></p>
-				<p><%=endCood %></p>
+				<p>Try different locations...</p>
 			</div>
 		</div>
 <%

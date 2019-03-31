@@ -11,8 +11,10 @@
 	String type = request.getParameter("type");
 	if (type != null) {
 		if (type.equals("create")) {
-			String startCood = request.getParameter("startCood");
-			String endCood = request.getParameter("endCood");
+			String startLat = request.getParameter("startLat");
+			String startLng = request.getParameter("startLng");
+			String endLat = request.getParameter("endLat");
+			String endLng = request.getParameter("endLng");
 			String startLoc = request.getParameter("startLoc");
 			String endLoc = request.getParameter("endLoc");
 			String vehType = request.getParameter("vehType");
@@ -22,8 +24,9 @@
 			int people = Integer.parseInt(request.getParameter("people"));
 			int price = Integer.parseInt(request.getParameter("price"));
 			String phone = (String) session.getAttribute("phone");
-			if (startCood != null && endCood != null && startLoc != null && endLoc != null && vehType != null
-					&& mobile != null && startTime > 00 && endTime > 00 && people > 0 && phone != null && price >= 0) {
+			if (/* startLat != null && startLng != null && endLng != null && endLat != null && */ startLoc != null
+					&& endLoc != null && vehType != null && mobile != null && startTime > 00 && endTime > 00
+					&& people > 0 && phone != null && price >= 0) {
 				RideDto dto = new RideDao().viewRide(phone);
 				RequestDto list = new RequestDao().viewMyRequest(phone);
 				if (dto == null) {
@@ -31,8 +34,14 @@
 						dto = new RideDto();
 						dto.setEndLoc(endLoc);
 						dto.setEndTime(endTime);
-						dto.setEndCood(endCood);
-						dto.setStartCood(startCood);
+						/* dto.setEndLat(Double.parseDouble(endLat));
+						dto.setEndLng(Double.parseDouble(endLng));
+						dto.setStartLat(Double.parseDouble(startLat));
+						dto.setStartLng(Double.parseDouble(startLng)); */
+						dto.setEndLat(0);
+						dto.setEndLng(0);
+						dto.setStartLat(0);
+						dto.setStartLng(0);
 						dto.setMobile(mobile);
 						dto.setPeople(people);
 						dto.setPhone(phone);

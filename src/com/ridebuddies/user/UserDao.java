@@ -60,6 +60,8 @@ public class UserDao {
 				dto.setPhone(rs.getString("phone"));
 				dto.setPassword(rs.getString("password"));
 				dto.setGender(rs.getString("gender"));
+				dto.setReqRat(rs.getInt("reqrat"));
+				dto.setRideRat(rs.getInt("riderat"));
 			}
 		} catch (Exception e) {
 			System.out.println("Exception in authenticate : "+e);
@@ -88,6 +90,8 @@ public class UserDao {
 				dto.setName(rs.getString("name"));
 				dto.setPhone(rs.getString("phone"));
 				dto.setGender(rs.getString("gender"));
+				dto.setReqRat(rs.getInt("reqrat"));
+				dto.setRideRat(rs.getInt("riderat"));
 			}
 		} catch (Exception e) {
 			System.out.println("Exception in viewUser : "+e);

@@ -14,6 +14,8 @@ if(type != null){
 				session.setAttribute("phone", dto.getPhone());
 				session.setAttribute("password", dto.getPassword());
 				session.setAttribute("gender", dto.getGender());
+				session.setAttribute("reqrat", dto.getReqRat());
+				session.setAttribute("riderat", dto.getRideRat());
 				response.sendRedirect("../home.jsp");
 			} else {
 				response.sendRedirect("../index.jsp?msg=loginerror");

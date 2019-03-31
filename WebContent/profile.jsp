@@ -102,6 +102,13 @@
 							<li><span style="color: grey;">Gender : </span> <span>
 									<%=session.getAttribute("gender")%></span></li>
 							<br />
+							<li><span style="color: grey;">Ride Rat : </span> <span>
+									<%=session.getAttribute("riderat")%></span></li>
+							<br />
+							<li><span style="color: grey;">Request Rat : </span> <span>
+									<%=session.getAttribute("reqrat")%></span></li>
+							<br />
+							
 						</ul>
 					</div>
 					<div class="col-12">

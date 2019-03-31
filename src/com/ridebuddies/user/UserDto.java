@@ -3,6 +3,23 @@ package com.ridebuddies.user;
 public class UserDto {
 
 	private String name,email,phone,password,gender;
+	int reqrat,riderat;
+
+	public int getReqRat() {
+		return reqrat;
+	}
+
+	public void setReqRat(int reqrat) {
+		this.reqrat = reqrat;
+	}
+
+	public int getRideRat() {
+		return riderat;
+	}
+
+	public void setRideRat(int riderat) {
+		this.riderat = riderat;
+	}
 
 	public String getGender() {
 		return gender;
